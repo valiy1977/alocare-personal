@@ -24,27 +24,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
-.tab-nav{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--bg2);padding:0 20px;position:sticky;top:57px;z-index:19}
-.tab-nav-btn{padding:10px 18px;font-size:13px;font-family:inherit;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;color:var(--text2);font-weight:500;transition:color .15s}
-.tab-nav-btn:hover{color:var(--text)}
-.tab-nav-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
-.panel{display:none;padding:18px 20px}
-.panel.active{display:block}
-.rpt-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;padding:12px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg)}
-.rpt-toolbar label{font-size:12px;color:var(--text2)}
-.rpt-input{font-size:12px;font-family:inherit;padding:5px 9px;border-radius:var(--radius);border:1px solid var(--border2);background:var(--bg3);color:var(--text)}
-.rpt-table{width:100%;border-collapse:collapse;font-size:13px}
-.rpt-table th{text-align:left;padding:8px 12px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border);background:var(--bg2);position:sticky;top:0}
-.rpt-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text)}
-.rpt-table tr:hover td{background:var(--bg3)}
-.rpt-table .link-cell{color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
-.rpt-table .link-cell:hover{opacity:.8}
-.rpt-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px}
-.rpt-card-head{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.rpt-section-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em}
-.tag-dur{display:inline-flex;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;background:var(--accent-bg);color:var(--accent-text)}
-.rpt-empty{padding:24px;text-align:center;font-size:13px;color:var(--text3)}
-.active-filter-bar{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding:8px 12px;background:var(--accent-bg);border:1px solid rgba(79,142,247,.25);border-radius:var(--radius);font-size:12px;color:var(--accent-text)}
 .topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:11px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20}
 .topbar-left{display:flex;align-items:center;gap:10px}
 .logo{width:30px;height:30px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;font-weight:800}
@@ -74,10 +53,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .person-row:last-child{border-bottom:none}
 .person-row:hover{background:var(--bg3)}
 .avatar{width:32px;height:32px;border-radius:50%;background:var(--accent-bg);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;border:1px solid rgba(79,142,247,.2)}
-.person-info{flex:1;min-width:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 8px;align-items:center}
-.person-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.person-company{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.person-role{font-size:12px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.person-name{font-size:13px;font-weight:500;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tag{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;flex-shrink:0}
 .tag-none{background:var(--bg4);color:var(--text3);border:1px solid var(--border)}
 .sc-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
@@ -112,13 +88,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .empty-row{padding:16px;text-align:center;font-size:13px;color:var(--text3);background:var(--bg2)}
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;align-items:center;justify-content:center}
 .modal-bg.open{display:flex}
-.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:1.4rem;width:360px;max-width:95vw}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:1.4rem;width:360px;max-width:95vw;max-height:90vh;overflow:auto}
+.modal.wide{width:560px}
 .modal h3{font-size:15px;font-weight:600;margin-bottom:13px}
 .modal label{font-size:12px;color:var(--text2);display:block;margin-bottom:4px;margin-top:11px}
 .modal input,.modal select{width:100%;font-size:13px;font-family:inherit;padding:7px 10px;border-radius:var(--radius);border:1px solid var(--border2);background:var(--bg3);color:var(--text)}
 .modal input:focus,.modal select:focus{outline:none;border-color:var(--accent)}
 .modal input::placeholder{color:var(--text3)}
-.modal-btns{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+.modal-btns{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
 .color-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px}
 .color-swatch{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
 .color-swatch.active{border-color:var(--text)}
@@ -128,6 +105,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .sc-edit-row .sc-btn:hover{background:var(--bg4)}
 .confirm-box{background:var(--danger-bg);border:1px solid var(--danger);border-radius:var(--radius);padding:10px 13px;font-size:12px;color:var(--danger);margin-top:10px}
 .info-box{background:var(--accent-bg);border:1px solid rgba(79,142,247,.3);border-radius:var(--radius);padding:10px 13px;font-size:12px;color:var(--accent-text);margin-top:10px;line-height:1.6}
+.code-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:10px;font-family:ui-monospace,Consolas,monospace;font-size:10px;line-height:1.45;color:var(--text2);max-height:150px;overflow:auto;white-space:pre;margin-top:8px}
+.steps{margin:8px 0 0 18px;font-size:12px;color:var(--text2);line-height:1.65}
 .toast{position:fixed;bottom:20px;right:20px;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:10px 16px;font-size:13px;z-index:200;transform:translateY(60px);opacity:0;transition:all .3s;pointer-events:none}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.ok{border-color:var(--success);color:var(--success)}
@@ -152,7 +131,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .loading{display:flex;align-items:center;justify-content:center;min-height:60vh;flex-direction:column;gap:12px}
 .spinner{width:32px;height:32px;border:3px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-/* snapshot modal table */
 .snap-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
 .snap-table th{padding:5px 8px;text-align:left;color:var(--text3);border-bottom:1px solid var(--border);font-weight:600}
 .snap-table td{padding:5px 8px;border-bottom:1px solid var(--border);color:var(--text2)}
@@ -164,7 +142,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 <div id="loading-screen" class="loading">
   <div class="spinner"></div>
-  <div style="font-size:13px;color:var(--text3)">Se conectează...</div>
+  <div style="font-size:13px;color:var(--text3)">Se încarcă...</div>
 </div>
 
 <div id="app-screen" style="display:none">
@@ -173,12 +151,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <div class="logo">D</div>
       <div>
         <div class="topbar-title">Alocare Personal — Activități</div>
-        <div class="topbar-sub">Depozit · sincronizat în timp real</div>
+        <div class="topbar-sub" id="topbar-sub">Depozit · salvare locală + Drive</div>
       </div>
     </div>
     <div class="topbar-right">
       <div class="clock" id="clock">—</div>
-      <div class="sync-pill" id="sync-pill"><span class="sdot sdot-warn"></span><span id="sync-txt">Conectare...</span></div>
+      <div class="sync-pill" id="sync-pill"><span class="sdot sdot-warn"></span><span id="sync-txt">Pornire...</span></div>
+      <button class="btn btn-sm" onclick="openDriveModal()">☁ Drive</button>
       <button class="btn btn-sm" onclick="triggerImport()">⬆ Import CSV</button>
       <button class="btn btn-sm btn-success" onclick="exportExcel()">⬇ Istoric Excel</button>
       <button class="btn btn-sm btn-danger" onclick="openResetModal()">↺ Zi nouă</button>
@@ -187,12 +166,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
   </div>
 
-  <div class="tab-nav">
-    <button class="tab-nav-btn active" onclick="switchTab('alocare')">Alocare</button>
-    <button class="tab-nav-btn" onclick="switchTab('raport')">📊 Raport</button>
-  </div>
-
-  <div id="panel-alocare" class="panel active">
   <div class="main">
     <div class="col-left">
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px" id="stats-bar">
@@ -250,7 +223,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
             </div>
             <div style="font-size:11px;color:var(--text3);margin-top:3px">scanere peste limita disponibilă</div>
           </div>
-          <div id="sc-breakdown" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)"></div>
         </div>
       </div>
       <div class="right-card">
@@ -260,68 +232,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
   </div>
 </div>
-  </div><!-- /panel-alocare -->
 
-  <div id="panel-raport" class="panel">
-    <div class="rpt-toolbar">
-      <label>Perioadă:</label>
-      <select class="rpt-input" id="rpt-period" onchange="rptPeriodChange()">
-        <option value="today">Azi</option>
-        <option value="week">Săptămâna aceasta</option>
-        <option value="month">Luna aceasta</option>
-        <option value="custom">Interval personalizat</option>
-      </select>
-      <span id="rpt-custom-dates" style="display:none;display:flex;gap:6px;align-items:center">
-        <input type="date" class="rpt-input" id="rpt-from"/>
-        <span style="color:var(--text3)">—</span>
-        <input type="date" class="rpt-input" id="rpt-to"/>
-      </span>
-      <button class="btn btn-sm btn-accent" onclick="renderRaport()">Aplică</button>
-      <span style="flex:1"></span>
-      <button class="btn btn-sm btn-success" onclick="exportExcel()">⬇ Export Excel</button>
-    </div>
-
-    <div id="active-filter-container"></div>
-
-    <div class="rpt-card" id="rpt-rezumat-card">
-      <div class="rpt-card-head">
-        <span class="rpt-section-title">Rezumat per persoană</span>
-        <span id="rpt-period-label" style="font-size:12px;color:var(--text2)"></span>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="rpt-table" id="rpt-rezumat-table">
-          <thead><tr>
-            <th>Nume</th><th>Compania</th><th>Funcția</th>
-            <th>Data</th><th>Prima intrare</th><th>Ultima ieșire</th>
-            <th>Total ore</th><th>Activități</th>
-          </tr></thead>
-          <tbody id="rpt-rezumat-body"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="rpt-card" id="rpt-desf-card">
-      <div class="rpt-card-head">
-        <span class="rpt-section-title" id="rpt-desf-title">Desfășurător activități</span>
-        <button class="btn btn-sm" id="rpt-clear-filter" onclick="clearRptFilter()" style="display:none">✕ Resetează filtru</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="rpt-table" id="rpt-desf-table">
-          <thead><tr>
-            <th>Data</th><th>Nume</th><th>Activitate</th>
-            <th>Ora start</th><th>Ora stop</th><th>Durata</th>
-          </tr></thead>
-          <tbody id="rpt-desf-body"></tbody>
-        </table>
-      </div>
-    </div>
-  </div><!-- /panel-raport -->
-
-</div><!-- /app-screen -->
-
-<!-- MODAL generic -->
 <div class="modal-bg" id="modal-bg" onclick="handleOverlay(event)">
-  <div class="modal">
+  <div class="modal" id="modal-box">
     <h3 id="modal-title"></h3>
     <div id="modal-body"></div>
     <div class="modal-btns" id="modal-btns">
@@ -339,16 +252,65 @@ const API_KEY    = '$2a$10$rtd7gpdDdPQeT2wKjiJVEu3clcr2.W7sm95Dx5w.Cehp9FR5mKdyC
 const BASE_URL   = 'https://api.jsonbin.io/v3';
 const DEPOT_NAME = 'depozit-central';
 const BIN_STORE  = 'depot_bin_id_v2';
-
-const FIXED_BIN_ID  = '6a3e6199f5f4af5e2933d10e';
-const GAS_URL = 'https://script.google.com/a/macros/otter.ro/s/AKfycbzeO_5OdDFROiGcnsy55o-mymmA6LHQsM1KbLzrYoYRxZN7B1hKImwMhRDdZvHNFlYs/exec';
-
+const HIST_STORE = 'depot_hist_bin_v1';
+const STATE_STORE= 'depot_state_local_v2';
+const HIST_LOCAL = 'depot_hist_local_v2';
+const DRIVE_STORE= 'depot_drive_webapp_url';
+const SNAP_STORE = 'depot_last_snap_date';
+const FIXED_BIN_ID  = '6a3e47e2da38895dfe01d9d5';
+const FIXED_HIST_ID = '6a3e5895da38895dfe0221b8';
+const DRIVE_EMAIL   = 'otter.valentin@gmail.com';
 const POLL_MS    = 5000;
 const SNAP_HOUR  = 18;
 const PRESET_COLORS = ['#4f8ef7','#34d399','#f59e0b','#f87171','#a78bfa','#fb7185','#22d3ee','#84cc16','#e879f9'];
 
+const GAS_CODE = `function doPost(e) {
+  var data = JSON.parse(e.postData.contents);
+  var props = PropertiesService.getScriptProperties();
+  var id = props.getProperty('SHEET_ID');
+  var ss = null;
+  if (id) { try { ss = SpreadsheetApp.openById(id); } catch (err) { ss = null; } }
+  if (!ss) {
+    ss = SpreadsheetApp.create('Istoric Alocare Depozit');
+    props.setProperty('SHEET_ID', ss.getId());
+  }
+  var sh = ss.getSheets()[0];
+  sh.setName('Istoric zilnic');
+  var acts = [];
+  (data.rows || []).forEach(function(row) {
+    (row.snapshot || []).forEach(function(s) {
+      if (!acts.some(function(a){ return a.actId === s.actId; })) {
+        acts.push({ actId: s.actId, label: s.label });
+      }
+    });
+  });
+  var header = ['Data'];
+  acts.forEach(function(a){ header.push(a.label + ' — pers'); header.push(a.label + ' — sc'); });
+  header.push('Total persoane'); header.push('Total scanere');
+  var values = [header];
+  (data.rows || []).forEach(function(row) {
+    var r = [row.date];
+    acts.forEach(function(a) {
+      var s = (row.snapshot || []).filter(function(x){ return x.actId === a.actId; })[0];
+      r.push(s ? s.persons : 0);
+      r.push(s ? s.scanere : 0);
+    });
+    r.push(row.totalPersons || 0);
+    r.push(row.totalScanere || 0);
+    values.push(r);
+  });
+  sh.clear();
+  if (values.length) sh.getRange(1, 1, values.length, values[0].length).setValues(values);
+  sh.autoResizeColumns(1, Math.max(1, values[0].length));
+  return ContentService.createTextOutput('ok');
+}
+function doGet() {
+  return ContentService.createTextOutput('Backup Alocare Depozit este activ.');
+}`;
+
 let binId     = null;
-// histBinId removed - using Google Sheets
+let histBinId = null;
+let cloudOk   = false;
 let state = {
   totalScanere:20, nextPid:1, nextAid:100,
   activities:[
@@ -359,46 +321,127 @@ let state = {
   ],
   persons:[]
 };
-// istoric zilnic: [{date:'26.06.2025', snapshot:[{actId,label,persons,scanere}], totalPersons, totalScanere}]
-let history = { rows: [], actLog: [] };
-// actLog entries: {id, personId, personName, company, role, actId, actLabel, date, start, stop, duration}
-let nextLogId = 1;
+let history = { rows: [] };
 
 let selectedColor   = PRESET_COLORS[0];
 let modalCb         = null;
 let isSaving        = false;
 let pendingSave     = false;
 let userActiveUntil = 0;
-let lastSnapDate    = null;
+let lastSnapDate    = localStorage.getItem(SNAP_STORE);
 let snapCheckTimer  = null;
 
-function userActive(){ userActiveUntil = Date.now() + 30000; }
+function userActive(){ userActiveUntil = Date.now() + 8000; }
 
-/* ══════════════════ INIT ══════════════════ */
-async function init() {
-  binId = FIXED_BIN_ID;
-  localStorage.setItem(BIN_STORE, binId);
-
-  const ok = await fetchState(true);
-  if(ok === false){
-    document.getElementById('loading-screen').innerHTML=`<div style="color:var(--danger);font-size:13px;text-align:center;padding:2rem">Eroare conexiune. Verifică internetul și reîncarcă.</div>`;
-    return;
-  }
-  await fetchHistory();
-
+function showApp(){
   document.getElementById('loading-screen').style.display='none';
   document.getElementById('app-screen').style.display='block';
-  startPolling();
-  startSnapCheck();
 }
 
-/* ══════════════════ API ══════════════════ */
+function loadLocal(){
+  try {
+    const s = localStorage.getItem(STATE_STORE);
+    if(s){
+      const parsed = JSON.parse(s);
+      if(parsed && typeof parsed==='object'){
+        state = parsed;
+        if(!state.persons) state.persons=[];
+        if(!state.activities) state.activities=[];
+      }
+    }
+    const h = localStorage.getItem(HIST_LOCAL);
+    if(h){
+      const parsedH = JSON.parse(h);
+      if(parsedH && Array.isArray(parsedH.rows)) history = parsedH;
+    }
+  } catch(e){}
+}
+
+function persistLocal(){
+  try {
+    localStorage.setItem(STATE_STORE, JSON.stringify(state));
+    localStorage.setItem(HIST_LOCAL, JSON.stringify(history));
+  } catch(e){}
+}
+
+function getDriveUrl(){ return (localStorage.getItem(DRIVE_STORE)||'').trim(); }
+
+function updateTopbar(){
+  const el = document.getElementById('topbar-sub');
+  if(!el) return;
+  const drive = getDriveUrl() ? 'Drive conectat' : 'Drive neconfigurat';
+  el.textContent = cloudOk ? 'Depozit · cloud + '+drive : 'Depozit · local + '+drive;
+}
+
+async function init(){
+  loadLocal();
+  showApp();
+  render();
+  startSnapCheck();
+  setSyncStatus('local');
+  updateTopbar();
+  await connectCloud();
+  updateTopbar();
+}
+
+async function connectCloud(){
+  binId     = localStorage.getItem(BIN_STORE)  || FIXED_BIN_ID;
+  histBinId = localStorage.getItem(HIST_STORE) || FIXED_HIST_ID;
+  localStorage.setItem(BIN_STORE,  binId);
+  localStorage.setItem(HIST_STORE, histBinId);
+
+  let ok = await fetchState(true);
+  if(!ok){
+    const created = await createBin(state, DEPOT_NAME);
+    if(created){
+      binId = created;
+      localStorage.setItem(BIN_STORE, binId);
+      ok = true;
+      setSyncStatus('ok');
+    }
+  }
+  await fetchHistory();
+  if(!histBinId || !(await histBinExists())){
+    const hid = await createBin(history.rows.length ? history : {rows:[]}, DEPOT_NAME+'-istoric');
+    if(hid){
+      histBinId = hid;
+      localStorage.setItem(HIST_STORE, histBinId);
+      await apiFetch(`${BASE_URL}/b/${histBinId}`,'PUT',history);
+    }
+  }
+
+  cloudOk = !!ok;
+  if(cloudOk){
+    setSyncStatus('ok');
+    startPolling();
+  } else {
+    setSyncStatus('local');
+  }
+}
+
 function apiFetch(url,method='GET',body=null,binName=null){
   const headers={'X-Master-Key':API_KEY,'Content-Type':'application/json'};
   if(binName) headers['X-Bin-Name']=binName;
   const opts={method,headers};
   if(body) opts.body=JSON.stringify(body);
   return fetch(url,opts);
+}
+
+async function createBin(payload, name){
+  try {
+    const r = await apiFetch(`${BASE_URL}/b`,'POST',payload,name);
+    if(!r.ok) return null;
+    const d = await r.json();
+    return (d.metadata && (d.metadata.id || d.metadata.parentId)) || null;
+  } catch(e){ return null; }
+}
+
+async function histBinExists(){
+  if(!histBinId) return false;
+  try {
+    const r = await apiFetch(`${BASE_URL}/b/${histBinId}/latest`);
+    return r.ok;
+  } catch(e){ return false; }
 }
 
 async function fetchState(force=false){
@@ -408,71 +451,74 @@ async function fetchState(force=false){
     const r=await apiFetch(`${BASE_URL}/b/${binId}/latest`);
     if(!r.ok) throw new Error();
     const d=await r.json();
-    if(d.record){ state=d.record; if(!state.persons)state.persons=[]; if(!state.activities)state.activities=[]; }
+    if(d.record){
+      const incoming = d.record;
+      const incomingCount = (incoming.persons||[]).length;
+      const localCount = (state.persons||[]).length;
+      if(incomingCount || !localCount){
+        state=incoming;
+        if(!state.persons)state.persons=[];
+        if(!state.activities)state.activities=[];
+        persistLocal();
+      }
+    }
     if(Date.now()>=userActiveUntil) render();
     setSyncStatus('ok');
+    cloudOk = true;
     return true;
-  } catch(e){ setSyncStatus('err'); return false; }
+  } catch(e){ if(force) setSyncStatus('local'); else setSyncStatus('err'); return false; }
 }
 
 async function pushState(){
-  if(!binId) return;
+  persistLocal();
+  if(!cloudOk || !binId) return;
   if(isSaving){pendingSave=true;return;}
   isSaving=true; setSyncStatus('saving');
   try {
     const r=await apiFetch(`${BASE_URL}/b/${binId}`,'PUT',state);
     if(!r.ok) throw new Error('HTTP '+r.status);
     setSyncStatus('ok');
-  } catch(e){ setSyncStatus('err'); showToast('Eroare salvare: '+e.message,'err'); }
+  } catch(e){ setSyncStatus('err'); showToast('Salvat local. Cloud: '+e.message,'warn'); }
   finally { isSaving=false; if(pendingSave){pendingSave=false;pushState();} }
 }
 
-function calcDuration(start, stop){
-  if(!start||!stop||start==='—'||stop==='—') return '—';
-  const s=start.replace('*',''), e=stop.replace('*','');
-  const [sh,sm]=s.split(':').map(Number);
-  const [eh,em]=e.split(':').map(Number);
-  if(isNaN(sh)||isNaN(sm)||isNaN(eh)||isNaN(em)) return '—';
-  let mins=(eh*60+em)-(sh*60+sm);
-  if(mins<0) mins+=24*60;
-  return String(Math.floor(mins/60)).padStart(2,'0')+':'+String(mins%60).padStart(2,'0');
-}
-function nowTime(){ return new Date().toTimeString().slice(0,5); }
-function nowDate(){ return new Date().toLocaleDateString('ro-RO',{day:'2-digit',month:'2-digit',year:'numeric'}); }
-
 async function fetchHistory(){
+  if(!histBinId) return;
   try {
-    const r = await fetch(GAS_URL+'?action=read');
-    const d = await r.json();
-    if(d.rows){
-      history.actLog = d.rows.map(r=>({
-        id:r.id, personName:r.personName||'', company:r.company||'',
-        role:r.role||'', actLabel:r.actLabel||'',
-        date:r.date||'', start:r.start||'',
-        stop:r.stop||'', duration:r.duration||''
-      }));
-      if(history.actLog.length)
-        nextLogId = Math.max(...history.actLog.map(l=>parseInt(l.id)||0))+1;
+    const r=await apiFetch(`${BASE_URL}/b/${histBinId}/latest`);
+    if(!r.ok) return;
+    const d=await r.json();
+    if(d.record && Array.isArray(d.record.rows) && d.record.rows.length >= (history.rows||[]).length){
+      history=d.record;
+      persistLocal();
     }
-  } catch(e){ console.warn('fetchHistory error:',e); }
+  } catch(e){}
 }
 
 async function pushHistory(){
-  const toSave = (history.actLog||[]).filter(l=>l._new);
-  if(!toSave.length) return;
-  const rows = toSave.map(l=>{const r={...l};delete r._new;return r;});
-  // Split in batches of 5
-  const batches = [];
-  for(let i=0;i<rows.length;i+=5) batches.push(rows.slice(i,i+5));
-  for(const batch of batches){
-    const url = GAS_URL + '?action=log&rows=' + encodeURIComponent(JSON.stringify(batch));
-    // Open in tiny hidden window - bypasses file:// CORS restrictions
-    const w = window.open(url, '_blank', 'width=1,height=1,left=-100,top=-100');
-    await new Promise(r=>setTimeout(r,2000));
-    if(w) w.close();
+  persistLocal();
+  if(histBinId && cloudOk){
+    try { await apiFetch(`${BASE_URL}/b/${histBinId}`,'PUT',history); } catch(e){}
   }
-  history.actLog.forEach(l=>{ delete l._new; });
-  showToast('Date salvate în Google Sheets ✓','ok');
+  sendHistoryToDrive();
+}
+
+function sendHistoryToDrive(){
+  const url = getDriveUrl();
+  if(!url) return false;
+  try {
+    fetch(url, {
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({
+        email: DRIVE_EMAIL,
+        updatedAt: new Date().toISOString(),
+        rows: history.rows || []
+      })
+    });
+    return true;
+  } catch(e){ return false; }
 }
 
 let pollTimer=null;
@@ -483,13 +529,13 @@ function setSyncStatus(s){
   dot.className='sdot';
   if(s==='ok'){dot.classList.add('sdot-ok');txt.textContent='Sincronizat';}
   else if(s==='saving'){dot.classList.add('sdot-warn');txt.textContent='Salvare...';}
+  else if(s==='local'){dot.classList.add('sdot-warn');txt.textContent='Mod local';}
   else{dot.classList.add('sdot-err');txt.textContent='Deconectat';}
 }
 
-/* ══════════════════ SNAPSHOT ZILNIC ══════════════════ */
 function startSnapCheck(){
   if(snapCheckTimer) clearInterval(snapCheckTimer);
-  snapCheckTimer = setInterval(checkSnapshot, 30000); // verifică la fiecare 30s
+  snapCheckTimer = setInterval(checkSnapshot, 30000);
   checkSnapshot();
 }
 
@@ -502,38 +548,47 @@ function checkSnapshot(){
   const h = now.getHours();
   const m = now.getMinutes();
   const today = todayStr();
-
-  // Ora 18:00–18:05 și nu am făcut snapshot azi
   if(h===SNAP_HOUR && m<5 && lastSnapDate!==today){
-    const hasData = state.persons.some(p=>p.actId) || (history.actLog||[]).some(l=>l._new);
+    const hasData = state.persons.some(p=>p.actId);
     if(hasData){
       lastSnapDate = today;
+      localStorage.setItem(SNAP_STORE, today);
       doSnapshot(today);
     }
   }
 }
 
-async function doSnapshot(dateStr, silent=false, stopT=null){
+async function doSnapshot(dateStr, silent=false){
   await fetchHistory();
-  const stop = stopT || nowTime();
-
-  // Close all open intervals
-  state.persons.filter(p=>p.actId&&p.startTime).forEach(p=>{
-    closePersonInterval(p, stop, dateStr);
-  });
-
-  // Close all intervals and push to Google Sheets
+  if(history.rows.find(r=>r.date===dateStr)) {
+    if(!silent) showToast('Snapshot pentru '+dateStr+' există deja','warn');
+    sendHistoryToDrive();
+    return;
+  }
+  const snapshot = state.activities.map(a=>({
+    actId:   a.id,
+    label:   a.label,
+    color:   a.color,
+    persons: state.persons.filter(p=>p.actId===a.id).length,
+    scanere: state.persons.filter(p=>p.actId===a.id&&p.scaner).length,
+  }));
+  const totalPersons = state.persons.filter(p=>p.actId).length;
+  const totalScanere = state.persons.filter(p=>p.actId&&p.scaner).length;
+  history.rows.push({ date:dateStr, snapshot, totalPersons, totalScanere });
   await pushHistory();
-
-  if(!silent) showToast('Zi salvată în Google Sheets ✓','ok');
-  else showToast('Raport zilnic salvat ✓','ok');
+  if(!silent){
+    showToast('Snapshot '+dateStr+' salvat ✓'+(getDriveUrl()?' (Drive)':''),'ok');
+  } else {
+    openSnapshotNotif(dateStr, snapshot, totalPersons, totalScanere);
+  }
 }
 
 function openSnapshotNotif(dateStr, snapshot, totalPersons, totalSc){
+  document.getElementById('modal-box').classList.remove('wide');
   document.getElementById('modal-bg').classList.add('open');
   document.getElementById('modal-title').textContent = '📊 Snapshot zilnic salvat — '+dateStr;
   document.getElementById('modal-body').innerHTML = `
-    <div class="info-box">Datele de la ora 18:00 au fost salvate automat în istoricul zilnic.</div>
+    <div class="info-box">Datele de la ora 18:00 au fost salvate în istoric${getDriveUrl()?' și trimise pe Drive':''}.</div>
     <table class="snap-table" style="margin-top:12px">
       <thead><tr><th>Activitate</th><th>Persoane</th><th>Scanere</th></tr></thead>
       <tbody>
@@ -555,136 +610,116 @@ function openSnapshotNotif(dateStr, snapshot, totalPersons, totalSc){
   modalCb=null;
 }
 
-/* ══════════════════ EXPORT EXCEL ISTORIC ══════════════════ */
+function buildExcelWorkbook(){
+  const allActs = [];
+  history.rows.forEach(row=>{
+    (row.snapshot||[]).forEach(s=>{
+      if(!allActs.find(a=>a.actId===s.actId)) allActs.push({actId:s.actId,label:s.label});
+    });
+  });
+  state.activities.forEach(a=>{
+    if(!allActs.find(x=>x.actId===a.id)) allActs.push({actId:a.id,label:a.label});
+  });
+  const header = ['Data'];
+  allActs.forEach(a=>{ header.push(a.label+' — pers'); header.push(a.label+' — sc'); });
+  header.push('Total persoane'); header.push('Total scanere');
+  const wsData = [header];
+  history.rows.forEach(row=>{
+    const r = [row.date];
+    allActs.forEach(a=>{
+      const s = (row.snapshot||[]).find(x=>x.actId===a.actId);
+      r.push(s ? s.persons : 0);
+      r.push(s ? s.scanere : 0);
+    });
+    r.push(row.totalPersons||0);
+    r.push(row.totalScanere||0);
+    wsData.push(r);
+  });
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.aoa_to_sheet(wsData);
+  ws['!cols'] = wsData[0].map((h,i)=>({wch: i===0?14:18}));
+  XLSX.utils.book_append_sheet(wb, ws, 'Istoric zilnic');
+  const ws2Data = [['Activitate','Persoane alocate','Scanere alocate']];
+  state.activities.forEach(a=>{
+    ws2Data.push([
+      a.label,
+      state.persons.filter(p=>p.actId===a.id).length,
+      state.persons.filter(p=>p.actId===a.id&&p.scaner).length
+    ]);
+  });
+  ws2Data.push(['TOTAL',
+    state.persons.filter(p=>p.actId).length,
+    state.persons.filter(p=>p.actId&&p.scaner).length
+  ]);
+  const ws2 = XLSX.utils.aoa_to_sheet(ws2Data);
+  ws2['!cols']=[{wch:20},{wch:20},{wch:18}];
+  XLSX.utils.book_append_sheet(wb, ws2, 'Situatie curenta');
+  return wb;
+}
+
 async function exportExcel(){
   await fetchHistory();
-
-  const wb = XLSX.utils.book_new();
-  const now=new Date();
-  const dStr=now.toLocaleDateString('ro-RO',{day:'2-digit',month:'2-digit',year:'numeric'}).replace(/\./g,'-');
-
-  // ── SHEET 1: Rezumat zilnic din actLog ──
-  const allLogsExport=[...(history.actLog||[])];
-  // Grup by date+activitate
-  const dayActMap={};
-  allLogsExport.forEach(l=>{
-    const k=l.date+'__'+l.actLabel;
-    if(!dayActMap[k]) dayActMap[k]={date:l.date,act:l.actLabel,persons:new Set(),sc:0};
-    dayActMap[k].persons.add(l.personName);
-  });
-  const allDates=[...new Set(allLogsExport.map(l=>l.date))].sort();
-  const allActsEx=[...new Set(allLogsExport.map(l=>l.actLabel))];
-  state.activities.forEach(a=>{ if(!allActsEx.includes(a.label)) allActsEx.push(a.label); });
-  const hdr=['Data',...allActsEx.flatMap(a=>[a+' — pers']),'Total persoane'];
-  const ws1Data=[hdr];
-  allDates.forEach(date=>{
-    const r=[date];
-    allActsEx.forEach(act=>{
-      const k=date+'__'+act;
-      r.push(dayActMap[k]?dayActMap[k].persons.size:0);
-    });
-    const totalP=new Set(allLogsExport.filter(l=>l.date===date).map(l=>l.personName)).size;
-    r.push(totalP);
-    ws1Data.push(r);
-  });
-  const ws1=XLSX.utils.aoa_to_sheet(ws1Data);
-  ws1['!cols']=ws1Data[0].map((_,i)=>({wch:i===0?12:16}));
-  XLSX.utils.book_append_sheet(wb,ws1,'Istoric zilnic');
-
-  // ── SHEET 2: Situatie curenta ──
-  const ws2Data=[['Activitate','Persoane alocate','Scanere alocate']];
-  state.activities.forEach(a=>{
-    ws2Data.push([a.label,state.persons.filter(p=>p.actId===a.id).length,state.persons.filter(p=>p.actId===a.id&&p.scaner).length]);
-  });
-  ws2Data.push(['TOTAL',state.persons.filter(p=>p.actId).length,state.persons.filter(p=>p.actId&&p.scaner).length]);
-  const ws2=XLSX.utils.aoa_to_sheet(ws2Data);
-  ws2['!cols']=[{wch:20},{wch:20},{wch:18}];
-  XLSX.utils.book_append_sheet(wb,ws2,'Situatie curenta');
-
-  // ── SHEET 3: Lista personal ──
-  const ws3Data=[['Nume','Compania','Functia','Activitate','Scaner','Status']];
-  state.persons.forEach(p=>{
-    const act=state.activities.find(a=>a.id===p.actId);
-    ws3Data.push([p.name,p.company||'',p.role||'',act?act.label:'Nealocată',p.actId&&p.scaner?'Da':'Nu',p.actId?'Alocat':'Liber']);
-  });
-  const ws3=XLSX.utils.aoa_to_sheet(ws3Data);
-  ws3['!cols']=[{wch:22},{wch:22},{wch:18},{wch:16},{wch:10},{wch:10}];
-  XLSX.utils.book_append_sheet(wb,ws3,'Lista personal');
-
-  // ── Collect all log entries (history + current open intervals) ──
-  const allLogs=[...(history.actLog||[])];
-  // Add currently open intervals (not yet closed)
-  const curTime=nowTime(), curDate=nowDate();
-  state.persons.filter(p=>p.actId&&p.startTime).forEach(p=>{
-    const act=state.activities.find(a=>a.id===p.actId);
-    allLogs.push({
-      id:'cur_'+p.id, personId:p.id, personName:p.name,
-      company:p.company||'', role:p.role||'',
-      actId:p.actId, actLabel:act?act.label:'—',
-      date:p.startDate||curDate,
-      start:p.startTime, stop:curTime+'*',
-      duration:calcDuration(p.startTime,curTime)+'*'
-    });
-  });
-
-  if(!allLogs.length && !history.rows.length){
+  if(!history.rows.length){
     showToast('Nu există date istorice încă','warn');
     return;
   }
-
-  // ── SHEET 4: Rezumat zilnic per persoana ──
-  // Group logs by date+person, compute first start, last stop, total duration
-  const summaryMap={};
-  allLogs.forEach(l=>{
-    const key=l.date+'__'+l.personName;
-    if(!summaryMap[key]) summaryMap[key]={
-      date:l.date, name:l.personName, company:l.company, role:l.role,
-      firstStart:'99:99', lastStop:'00:00', totalMins:0, activities:[]
-    };
-    const s=summaryMap[key];
-    if(l.start&&l.start!=='—'&&l.start<s.firstStart) s.firstStart=l.start;
-    const stopClean=(l.stop||'').replace('*','');
-    if(stopClean&&stopClean!=='—'&&stopClean>s.lastStop) s.lastStop=stopClean;
-    // Add duration minutes
-    const dur=l.duration?l.duration.replace('*',''):'';
-    if(dur&&dur!=='—'){
-      const [h,m]=dur.split(':').map(Number);
-      if(!isNaN(h)&&!isNaN(m)) s.totalMins+=h*60+m;
-    }
-    s.activities.push(l.actLabel);
-  });
-
-  const ws4Data=[['Data','Nume','Compania','Functia','Prima intrare','Ultima iesire','Total munca','Activitati']];
-  Object.values(summaryMap).sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name)).forEach(s=>{
-    const totalH=Math.floor(s.totalMins/60), totalM=s.totalMins%60;
-    const totalDur=String(totalH).padStart(2,'0')+':'+String(totalM).padStart(2,'0');
-    const uniqueActs=[...new Set(s.activities)].join(', ');
-    ws4Data.push([s.date,s.name,s.company,s.role,
-      s.firstStart==='99:99'?'—':s.firstStart,
-      s.lastStop==='00:00'?'—':s.lastStop,
-      totalDur, uniqueActs]);
-  });
-  const ws4=XLSX.utils.aoa_to_sheet(ws4Data);
-  ws4['!cols']=[{wch:12},{wch:22},{wch:20},{wch:16},{wch:13},{wch:13},{wch:12},{wch:30}];
-  XLSX.utils.book_append_sheet(wb,ws4,'Rezumat zilnic');
-
-  // ── SHEET 5: Desfasurator activitati ──
-  const ws5Data=[['Data','Nume','Compania','Functia','Activitate','Ora start','Ora stop','Durata']];
-  allLogs.sort((a,b)=>a.date.localeCompare(b.date)||a.personName.localeCompare(b.personName)||a.start.localeCompare(b.start)).forEach(l=>{
-    ws5Data.push([l.date,l.personName,l.company||'',l.role||'',l.actLabel,l.start,l.stop,l.duration]);
-  });
-  const ws5=XLSX.utils.aoa_to_sheet(ws5Data);
-  ws5['!cols']=[{wch:12},{wch:22},{wch:20},{wch:16},{wch:18},{wch:10},{wch:10},{wch:10}];
-  // Add autofilter on sheet 5
-  ws5['!autofilter']={ref:'A1:H1'};
-  XLSX.utils.book_append_sheet(wb,ws5,'Desfasurator');
-
-  XLSX.writeFile(wb,`Alocare_Depozit_${dStr}.xlsx`);
-  showToast('Excel descărcat ✓','ok');
+  if(typeof XLSX==='undefined'){
+    showToast('Biblioteca Excel nu s-a încărcat. Verifică internetul.','err');
+    return;
+  }
+  const wb = buildExcelWorkbook();
+  const d=new Date().toLocaleDateString('ro-RO',{day:'2-digit',month:'2-digit',year:'numeric'}).replace(/\./g,'-');
+  XLSX.writeFile(wb, `Alocare_Depozit_${d}.xlsx`);
+  const sent = sendHistoryToDrive();
+  showToast(sent ? 'Excel descărcat și istoric trimis pe Drive ✓' : 'Excel descărcat ✓','ok');
 }
 
-/* ══════════════════ RENDER ══════════════════ */
-let activeFilter = 'all'; // 'all' | actId | 'nealocat'
+function copyGasCode(){
+  navigator.clipboard.writeText(GAS_CODE).then(()=>showToast('Cod copiat. Lipește-l în Apps Script.','ok'))
+    .catch(()=>showToast('Copiere eșuată. Selectează textul din casetă.','warn'));
+}
+
+function saveDriveUrlFromModal(){
+  const url = (document.getElementById('m-drive-url')||{}).value;
+  if(!url || !url.includes('script.google.com')){
+    showToast('Lipește URL-ul Web App (script.google.com)','warn');
+    return false;
+  }
+  localStorage.setItem(DRIVE_STORE, url.trim());
+  updateTopbar();
+  sendHistoryToDrive();
+  showToast('Drive conectat pentru '+DRIVE_EMAIL,'ok');
+  return true;
+}
+
+function openDriveModal(){
+  userActive();
+  document.getElementById('modal-box').classList.add('wide');
+  document.getElementById('modal-bg').classList.add('open');
+  document.getElementById('modal-title').textContent = 'Copiere istoric pe Google Drive';
+  const current = getDriveUrl();
+  document.getElementById('modal-body').innerHTML = `
+    <div class="info-box">Istoricul se scrie în Drive-ul <strong>${DRIVE_EMAIL}</strong>, într-un fișier Google Sheets numit <strong>Istoric Alocare Depozit</strong>. Trebuie făcut o singură dată, logat cu acel Gmail.</div>
+    <ol class="steps">
+      <li>Deschide Chrome autentificat ca <strong>${DRIVE_EMAIL}</strong>.</li>
+      <li>Mergi la <a href="https://script.google.com" target="_blank" rel="noopener" style="color:var(--accent-text)">script.google.com</a> → New project.</li>
+      <li>Șterge codul implicit, apasă „Copiază scriptul” și lipește-l.</li>
+      <li>Deploy → New deployment → tip <strong>Web app</strong>.</li>
+      <li>Execute as: <strong>Me</strong> · Who has access: <strong>Anyone</strong>.</li>
+      <li>Copiază URL-ul și lipește-l mai jos.</li>
+    </ol>
+    <button class="btn btn-sm" style="margin-top:10px" onclick="copyGasCode()">Copiază scriptul</button>
+    <div class="code-box">${GAS_CODE.replace(/</g,'&lt;')}</div>
+    <label>URL Web App</label>
+    <input id="m-drive-url" placeholder="https://script.google.com/macros/s/.../exec" value="${current.replace(/"/g,'&quot;')}"/>
+    ${current?'<div class="info-box">Drive este deja configurat. Poți retrimite istoricul cu Salvează.</div>':''}`;
+  document.getElementById('modal-btns').innerHTML=`
+    <button class="btn" onclick="closeModal()">Închide</button>
+    <button class="btn btn-accent" onclick="confirmModal()">Salvează și trimite</button>`;
+  modalCb=()=>saveDriveUrlFromModal();
+}
+
+let activeFilter = 'all';
 
 function render(){renderPersons();renderActivities();renderScanere();renderSummary();renderFilterBar();}
 
@@ -693,16 +728,10 @@ function renderFilterBar(){
   const lipsaAct = state.activities.find(a=>a.label.toUpperCase()==='LIPSA'||a.label.toUpperCase()==='LIPSĂ');
   const lipsaId  = lipsaAct ? lipsaAct.id : null;
   const nealocat = state.persons.filter(p=>!p.actId).length;
-
-  // Companii unice din lista de personal
-  const companies = [...new Set(state.persons.map(p=>p.company).filter(c=>c&&c.trim()))].sort();
-
-  // Rând 1: Toți + Lipsă + companii
   const row1 = [];
   row1.push(`<button class="filter-chip${activeFilter==='all'?' active':''}"
     style="${activeFilter==='all'?'background:var(--accent);border-color:var(--accent);color:#fff':''}"
     onclick="setFilter('all')">Toți <span style="opacity:.7">${state.persons.length}</span></button>`);
-
   if(lipsaAct){
     const cntLipsa = state.persons.filter(p=>p.actId===lipsaId).length;
     const isActive = activeFilter===lipsaId;
@@ -713,25 +742,10 @@ function renderFilterBar(){
       ${lipsaAct.label} <span style="opacity:.7">${cntLipsa}</span>
     </button>`);
   }
-
-  // Companii pe rândul 1
-  companies.forEach(company=>{
-    const cnt = state.persons.filter(p=>p.company===company).length;
-    const filterId = 'company_'+company;
-    const isActive = activeFilter===filterId;
-    row1.push(`<button class="filter-chip${isActive?' active':''}"
-      style="${isActive?'background:var(--text2);border-color:var(--text2);color:var(--bg)':'border-color:var(--border2);color:var(--text2)'}"
-      onclick="setFilter('${filterId}')">
-      🏢 ${company} <span style="opacity:.7">${cnt}</span>
-    </button>`);
-  });
-
-  // Rând 2: Nealocați + activități (fără Lipsă)
   const row2 = [];
   row2.push(`<button class="filter-chip${activeFilter==='nealocat'?' active':''}"
     style="${activeFilter==='nealocat'?'background:var(--warning);border-color:var(--warning);color:#1a1d2e':''}"
     onclick="setFilter('nealocat')">Nealocați <span style="opacity:.7">${nealocat}</span></button>`);
-
   state.activities.filter(a=>a.id!==lipsaId).forEach(a=>{
     const cnt = state.persons.filter(p=>p.actId===a.id).length;
     const isActive = activeFilter===a.id;
@@ -742,7 +756,6 @@ function renderFilterBar(){
       ${a.label} <span style="opacity:.7">${cnt}</span>
     </button>`);
   });
-
   el.innerHTML = `
     <div style="display:flex;flex-wrap:wrap;gap:6px;width:100%">${row1.join('')}</div>
     <div style="display:flex;flex-wrap:wrap;gap:6px;width:100%;margin-top:5px">${row2.join('')}</div>`;
@@ -756,29 +769,21 @@ function setFilter(f){
 
 function renderPersons(){
   const el=document.getElementById('person-list');
-
-  // Găsim activitatea LIPSA
   const lipsaAct = state.activities.find(a=>a.label.toUpperCase()==='LIPSA'||a.label.toUpperCase()==='LIPSĂ');
   const lipsaId  = lipsaAct ? lipsaAct.id : null;
-
   const total    = state.persons.length;
   const lipsa    = lipsaId ? state.persons.filter(p=>p.actId===lipsaId).length : 0;
   const prezent  = total - lipsa;
   const alocat   = state.persons.filter(p=>p.actId && p.actId!==lipsaId).length;
   const nealocat = prezent - alocat;
-
   document.getElementById('stat-total').textContent    = total;
   document.getElementById('stat-lipsa').textContent    = lipsa;
   document.getElementById('stat-prezent').textContent  = prezent;
   document.getElementById('stat-alocat').textContent   = alocat;
   document.getElementById('stat-nealocat').textContent = Math.max(0,nealocat);
-
-  // Aplică filtrul
   let filtered = state.persons;
-  if(activeFilter==='nealocat')             filtered = state.persons.filter(p=>!p.actId);
-  else if(activeFilter.startsWith('company_')) filtered = state.persons.filter(p=>p.company===activeFilter.replace('company_',''));
-  else if(activeFilter!=='all')             filtered = state.persons.filter(p=>p.actId===activeFilter);
-
+  if(activeFilter==='nealocat')       filtered = state.persons.filter(p=>!p.actId);
+  else if(activeFilter!=='all')       filtered = state.persons.filter(p=>p.actId===activeFilter);
   if(!filtered.length){
     el.innerHTML=`<div class="empty-row">${activeFilter==='all'?'Nicio persoană. Adaugă sau importă CSV.':'Nicio persoană în această categorie.'}</div>`;
     return;
@@ -789,19 +794,14 @@ function renderPersons(){
     const tagSty=act?`background:${hexRgba(act.color,.14)};color:${act.color};border:1px solid ${hexRgba(act.color,.3)}`:'';
     return `<div class="person-row">
       <div class="avatar">${initials(p.name)}</div>
-      <div class="person-info">
-        <span class="person-name">${p.name}</span>
-        <span class="person-company">${p.company||'—'}</span>
-        <span class="person-role">${p.role||'—'}</span>
-      </div>
+      <span class="person-name">${p.name}</span>
       <span class="${act?'tag':'tag tag-none'}" style="${tagSty}">
-        ${act?act.label:'Nealocată'}${hasSc?'<span class="sc-dot"></span>':''}${p.startTime&&p.actId?`<span style="font-size:10px;opacity:.65;margin-left:3px">${p.startTime}</span>`:''}
+        ${act?act.label:'Nealocată'}${hasSc?'<span class="sc-dot"></span>':''}
       </span>
       <div class="person-actions">
         ${p.actId
           ?`<button class="btn-dealloc" onclick="deallocPerson(${p.id})">×</button>`
           :`<select class="sel-act" id="sel-${p.id}" onchange="userActive();toggleScanerChk(${p.id})" onfocus="userActive()">
-
               <option value="">Activitate...</option>
               ${[...state.activities].sort((a,b)=>{
                 const aL=a.label.toUpperCase()==='LIPSA'||a.label.toUpperCase()==='LIPSĂ';
@@ -851,46 +851,6 @@ function renderScanere(){
   } else {
     necesarRow.style.display='none';
   }
-
-  // Breakdown scanere pe activități
-  const bd = document.getElementById('sc-breakdown');
-  const actsWithSc = state.activities.map(a=>({
-    ...a,
-    persons: state.persons.filter(p=>p.actId===a.id&&p.scaner)
-  })).filter(a=>a.persons.length>0);
-
-  if(!actsWithSc.length){ bd.innerHTML=''; return; }
-
-  // Calculăm câte scanere sunt "în exces" — cele de la sfârșitul listei peste limită
-  let cumul = 0;
-  const lipsaId = (state.activities.find(a=>a.label.toUpperCase()==='LIPSA'||a.label.toUpperCase()==='LIPSĂ')||{}).id;
-
-  bd.innerHTML = actsWithSc.map(a=>{
-    const cnt = a.persons.length;
-    const overflowStart = Math.max(0, state.totalScanere - cumul); // câte mai încap
-    const normal = Math.min(cnt, overflowStart);
-    const over   = cnt - normal;
-    cumul += cnt;
-
-    const dots = [];
-    for(let i=0;i<normal;i++) dots.push(`<span style="width:8px;height:8px;border-radius:50%;background:${a.color};display:inline-block;margin:1px"></span>`);
-    for(let i=0;i<over;i++)   dots.push(`<span style="width:8px;height:8px;border-radius:50%;background:var(--danger);display:inline-block;margin:1px;box-shadow:0 0 0 1px rgba(248,113,113,.5)" title="Peste limită"></span>`);
-
-    // Persoanele cu scaner pe această activitate
-    const names = a.persons.map((p,i)=>{
-      const isOver = i >= normal;
-      return `<span style="font-size:10px;padding:1px 5px;border-radius:10px;background:${isOver?'var(--danger-bg)':hexRgba(a.color,.12)};color:${isOver?'var(--danger)':a.color};border:1px solid ${isOver?'rgba(248,113,113,.3)':hexRgba(a.color,.25)};white-space:nowrap">${p.name.split(' ')[0]}${isOver?' ⚠':''}</span>`;
-    }).join('');
-
-    return `<div style="margin-bottom:8px">
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
-        <span style="width:7px;height:7px;border-radius:50%;background:${a.color};flex-shrink:0"></span>
-        <span style="font-size:12px;font-weight:600;color:var(--text2);flex:1">${a.label}</span>
-        <span style="font-size:11px;font-weight:700;color:${over>0?'var(--danger)':a.color}">${cnt} sc${over>0?` <span style="color:var(--danger)">(+${over} peste)</span>`:''}</span>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px">${names}</div>
-    </div>`;
-  }).join('');
 }
 
 function renderSummary(){
@@ -916,7 +876,6 @@ function renderSummary(){
   }).join('');
 }
 
-/* ══════════════════ ACȚIUNI ══════════════════ */
 function toggleScanerChk(pid){
   const sel=document.getElementById('sel-'+pid);
   const chk=document.getElementById('chk-'+pid);
@@ -930,61 +889,28 @@ function toggleScanerChk(pid){
   lbl.style.pointerEvents = isLipsa ? 'none' : '';
 }
 
-function closePersonInterval(p, stopT, stopD){
-  if(!p.actId || !p.startTime) return;
-  if(!history.actLog) history.actLog=[];
-  const act=state.activities.find(a=>a.id===p.actId);
-  const dur=calcDuration(p.startTime, stopT);
-  history.actLog.push({
-    id: nextLogId++,
-    personId: p.id, personName: p.name,
-    company: p.company||'', role: p.role||'',
-    actId: p.actId, actLabel: act?act.label:'—',
-    date: p.startDate||stopD,
-    start: p.startTime, stop: stopT,
-    duration: dur,
-    _new: true  // flag for pushHistory
-  });
-}
-
 function allocPerson(pid){
-  const sel=document.getElementById('sel-'+pid);
-  const chk=document.getElementById('chk-'+pid);
+  const sel=document.getElementById('sel-'+pid); const chk=document.getElementById('chk-'+pid);
   const actId=sel?sel.value:'';
   if(!actId){showToast('Selectează o activitate mai întâi','warn');return;}
   const wantsSc=chk?chk.checked:false;
   const used=usedScanere();
-  if(wantsSc && used>=state.totalScanere) showToast('Atenție: depășești numărul de scanere disponibile!','warn');
-  const p=state.persons.find(x=>x.id===pid);
-  if(p){
-    if(p.actId) closePersonInterval(p, nowTime(), nowDate());
-    p.actId=actId; p.scaner=wantsSc;
-    p.startTime=nowTime(); p.startDate=nowDate();
+  if(wantsSc && used>=state.totalScanere){
+    showToast('Atenție: depășești numărul de scanere disponibile!','warn');
   }
-  userActiveUntil=0;
-  render();
-  pushState();
-  pushHistory().catch(e=>console.warn('History save error:',e));
-}
-
-function deallocPerson(pid){
   const p=state.persons.find(x=>x.id===pid);
-  if(p){
-    closePersonInterval(p, nowTime(), nowDate());
-    p.actId=null; p.scaner=false; p.startTime=null; p.startDate=null;
-  }
-  render();
-  pushState();
-  pushHistory().catch(e=>console.warn('History save error:',e));
+  if(p){p.actId=actId;p.scaner=wantsSc;}
+  userActiveUntil=0; render(); pushState();
 }
+function deallocPerson(pid){const p=state.persons.find(x=>x.id===pid);if(p){p.actId=null;p.scaner=false;}render();pushState();}
 function removePerson(pid){state.persons=state.persons.filter(p=>p.id!==pid);render();pushState();}
 function removeActivity(aid){
   state.persons.forEach(p=>{if(p.actId===aid){p.actId=null;p.scaner=false;}});
   state.activities=state.activities.filter(a=>a.id!==aid);render();pushState();
 }
 
-/* ══════════════════ MODALS ══════════════════ */
 function resetModalBtns(){
+  document.getElementById('modal-box').classList.remove('wide');
   document.getElementById('modal-btns').innerHTML=`
     <button class="btn" onclick="closeModal()">Anulează</button>
     <button class="btn btn-accent" onclick="confirmModal()">Salvează</button>`;
@@ -997,18 +923,8 @@ function openModal(mode){
   const title=document.getElementById('modal-title'); const body=document.getElementById('modal-body');
   if(mode==='person'){
     title.textContent='Adaugă persoană';
-    body.innerHTML=`
-      <label>Nume complet</label><input id="m-name" placeholder="Prenume Nume" autofocus/>
-      <label>Compania</label><input id="m-company" placeholder="ex: SC Exemplu SRL"/>
-      <label>Funcția</label><input id="m-role" placeholder="ex: Operator"/>`;
-    modalCb=()=>{
-      const n=document.getElementById('m-name').value.trim();
-      if(!n)return false;
-      const company=document.getElementById('m-company').value.trim();
-      const role=document.getElementById('m-role').value.trim();
-      state.persons.push({id:state.nextPid++,name:n,company,role,actId:null,scaner:false});
-      showToast('Persoană adăugată','ok');return true;
-    };
+    body.innerHTML=`<label>Nume complet</label><input id="m-name" placeholder="Prenume Nume" autofocus/>`;
+    modalCb=()=>{const n=document.getElementById('m-name').value.trim();if(!n)return false;state.persons.push({id:state.nextPid++,name:n,actId:null,scaner:false});showToast('Persoană adăugată','ok');return true;};
   } else if(mode==='activity'){
     title.textContent='Activitate nouă';
     body.innerHTML=`<label>Nume activitate</label><input id="m-aname" placeholder="ex: Sortare" autofocus/>
@@ -1040,14 +956,15 @@ function openResetModal(){
       <input type="checkbox" id="chk-reset-persons" style="cursor:pointer;accent-color:var(--accent)">
       Șterge și lista de personal
     </label>
-    <div class="info-box" style="margin-top:10px">Dacă există date alocate, se va salva un snapshot în istoricul zilnic înainte de resetare.</div>`;
+    <div class="info-box" style="margin-top:10px">Dacă există date alocate, se va salva un snapshot în istoric (și pe Drive, dacă e configurat) înainte de resetare.</div>`;
   modalCb=async()=>{
     const delP=document.getElementById('chk-reset-persons')?.checked;
     const today=todayStr();
     const hasData=state.persons.some(p=>p.actId);
-    const stopTime=document.getElementById('inp-stop-time')?.value||nowTime();
-    if(hasData) await doSnapshot(today, true, stopTime);
-    state.persons.forEach(p=>{p.actId=null;p.scaner=false;p.startTime=null;p.startDate=null;});
+    if(hasData && !history.rows.find(r=>r.date===today)){
+      await doSnapshot(today, true);
+    }
+    state.persons.forEach(p=>{p.actId=null;p.scaner=false;});
     if(delP) state.persons=[];
     showToast('Resetare completă ✓','ok');
     return true;
@@ -1056,11 +973,10 @@ function openResetModal(){
 
 function chSc(d){const el=document.getElementById('m-sc');if(el)el.value=Math.max(1,parseInt(el.value||1)+d);}
 function pickColor(el){selectedColor=el.dataset.color;document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('active'));el.classList.add('active');const m=document.getElementById('m-color');if(m)m.value=selectedColor;}
-function closeModal(){document.getElementById('modal-bg').classList.remove('open');modalCb=null;userActiveUntil=0;}
+function closeModal(){document.getElementById('modal-bg').classList.remove('open');document.getElementById('modal-box').classList.remove('wide');modalCb=null;userActiveUntil=0;}
 async function confirmModal(){if(!modalCb)return;const res=await modalCb();if(res===false)return;closeModal();render();pushState();}
 function handleOverlay(e){if(e.target===document.getElementById('modal-bg'))closeModal();}
 
-/* ══════════════════ IMPORT CSV ══════════════════ */
 function triggerImport(){document.getElementById('csv-input').click();}
 function importCSV(e){
   const file=e.target.files[0];if(!file)return;
@@ -1068,14 +984,11 @@ function importCSV(e){
   reader.onload=ev=>{
     const lines=ev.target.result.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
     let added=0;
-    lines.forEach((line,idx)=>{
-      const cols=line.split(',').map(c=>c.replace(/"/g,'').trim());
-      const name=cols[0];
+    lines.forEach(line=>{
+      const name=line.split(',')[0].replace(/"/g,'').trim();
       if(!name||['nume','name'].includes(name.toLowerCase()))return;
-      const company=cols[1]||'';
-      const role=cols[2]||'';
       if(!state.persons.some(p=>p.name.toLowerCase()===name.toLowerCase())){
-        state.persons.push({id:state.nextPid++,name,company,role,actId:null,scaner:false});added++;
+        state.persons.push({id:state.nextPid++,name,actId:null,scaner:false});added++;
       }
     });
     render();pushState();showToast(`Import: ${added} persoane adăugate`,'ok');
@@ -1083,11 +996,10 @@ function importCSV(e){
   reader.readAsText(file,'UTF-8');e.target.value='';
 }
 
-/* ══════════════════ HELPERS ══════════════════ */
 function initials(n){const p=n.trim().split(' ');return((p[0]?.[0]||'')+(p[1]?.[0]||'')).toUpperCase()}
 function hexRgba(hex,a){const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return`rgba(${r},${g},${b},${a})`}
 function usedScanere(){return state.persons.filter(p=>p.scaner&&p.actId).length}
-function showToast(msg,type='ok'){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+type+' show';setTimeout(()=>t.classList.remove('show'),2800)}
+function showToast(msg,type='ok'){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+type+' show';setTimeout(()=>t.classList.remove('show'),3200)}
 
 function toggleTheme(){
   const html=document.documentElement;const isDark=html.getAttribute('data-theme')==='dark';
@@ -1097,183 +1009,11 @@ function toggleTheme(){
 
 function updateClock(){
   const now=new Date();
-  document.getElementById('clock').textContent=
+  const clock=document.getElementById('clock');
+  if(!clock) return;
+  clock.textContent=
     now.toLocaleDateString('ro-RO',{weekday:'short',day:'numeric',month:'short'})+' · '+
     now.toLocaleTimeString('ro-RO',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-}
-
-/* ══════════════════ TABS ══════════════════ */
-function switchTab(tab){
-  document.querySelectorAll('.tab-nav-btn').forEach((b,i)=>b.classList.toggle('active',['alocare','raport'][i]===tab));
-  document.getElementById('panel-alocare').classList.toggle('active',tab==='alocare');
-  document.getElementById('panel-raport').classList.toggle('active',tab==='raport');
-  if(tab==='raport'){ rptPeriodChange(); renderRaport(); }
-}
-
-/* ══════════════════ RAPORT ══════════════════ */
-let rptFilterName = null;
-let rptFilterDate = null;
-
-function rptPeriodChange(){
-  const v=document.getElementById('rpt-period')?.value;
-  const cust=document.getElementById('rpt-custom-dates');
-  if(cust) cust.style.display=v==='custom'?'flex':'none';
-  if(v!=='custom') renderRaport();
-}
-
-function getRptDateRange(){
-  const v=document.getElementById('rpt-period')?.value||'today';
-  const now=new Date();
-  const fmt=d=>d.toLocaleDateString('ro-RO',{day:'2-digit',month:'2-digit',year:'numeric'});
-  if(v==='today') return {from:fmt(now),to:fmt(now),label:'Azi — '+fmt(now)};
-  if(v==='week'){
-    const mon=new Date(now); mon.setDate(now.getDate()-now.getDay()+1);
-    return {from:fmt(mon),to:fmt(now),label:'Săptămâna aceasta'};
-  }
-  if(v==='month'){
-    const m1=new Date(now.getFullYear(),now.getMonth(),1);
-    return {from:fmt(m1),to:fmt(now),label:'Luna aceasta — '+now.toLocaleDateString('ro-RO',{month:'long',year:'numeric'})};
-  }
-  if(v==='custom'){
-    const f=document.getElementById('rpt-from')?.value;
-    const t=document.getElementById('rpt-to')?.value;
-    if(!f||!t) return null;
-    // convert YYYY-MM-DD to DD.MM.YYYY
-    const cvt=s=>{const [y,m,d]=s.split('-');return d+'.'+m+'.'+y;};
-    return {from:cvt(f),to:cvt(t),label:cvt(f)+' — '+cvt(t)};
-  }
-  return null;
-}
-
-function dateInRange(dateStr, from, to){
-  // dateStr format: DD.MM.YYYY
-  const parse=s=>{const [d,m,y]=s.split('.');return new Date(y,m-1,d);};
-  const d=parse(dateStr), f=parse(from), t=parse(to);
-  return d>=f && d<=t;
-}
-
-function getAllLogs(){
-  // Filter out _new flag from display
-  const logs=(history.actLog||[]).filter(l=>!l._new||true).map(l=>({...l,_new:undefined}));
-  // Add currently open intervals
-  const curT=nowTime(), curD=nowDate();
-  state.persons.filter(p=>p.actId&&p.startTime).forEach(p=>{
-    const act=state.activities.find(a=>a.id===p.actId);
-    logs.push({
-      id:'cur_'+p.id, personName:p.name,
-      company:p.company||'', role:p.role||'',
-      actId:p.actId, actLabel:act?act.label:'—',
-      date:p.startDate||curD,
-      start:p.startTime, stop:curT+'*',
-      duration:calcDuration(p.startTime,curT)+'*'
-    });
-  });
-  return logs;
-}
-
-function renderRaport(){
-  const range=getRptDateRange();
-  if(!range){ return; }
-  document.getElementById('rpt-period-label').textContent=range.label;
-
-  const allLogs=getAllLogs().filter(l=>dateInRange(l.date,range.from,range.to));
-
-  // ── Rezumat ──
-  const summaryMap={};
-  allLogs.forEach(l=>{
-    const key=l.date+'__'+l.personName;
-    if(!summaryMap[key]) summaryMap[key]={
-      date:l.date,name:l.personName,company:l.company,role:l.role,
-      firstStart:'99:99',lastStop:'00:00',totalMins:0,acts:new Set()
-    };
-    const s=summaryMap[key];
-    const st=l.start||''; const sp=(l.stop||'').replace('*','');
-    if(st&&st!=='—'&&st<s.firstStart) s.firstStart=st;
-    if(sp&&sp!=='—'&&sp>s.lastStop) s.lastStop=sp;
-    const dur=(l.duration||'').replace('*','');
-    if(dur&&dur!=='—'){const[h,m]=dur.split(':').map(Number);if(!isNaN(h)&&!isNaN(m))s.totalMins+=h*60+m;}
-    s.acts.add(l.actLabel);
-  });
-
-  const tbody=document.getElementById('rpt-rezumat-body');
-  const rows=Object.values(summaryMap).sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name));
-  if(!rows.length){
-    tbody.innerHTML=`<tr><td colspan="8" class="rpt-empty">Nicio înregistrare în această perioadă.</td></tr>`;
-  } else {
-    tbody.innerHTML=rows.map(s=>{
-      const h=Math.floor(s.totalMins/60),m=s.totalMins%60;
-      const tot=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');
-      const acts=[...s.acts].join(', ');
-      return `<tr>
-        <td><span class="link-cell" onclick="filterDesf('${s.name.replace(/'/g,"\\'")}','${s.date}')">${s.name}</span></td>
-        <td>${s.company}</td><td>${s.role}</td><td>${s.date}</td>
-        <td>${s.firstStart==='99:99'?'—':s.firstStart}</td>
-        <td>${s.lastStop==='00:00'?'—':s.lastStop}</td>
-        <td><span class="tag-dur">${tot}</span></td>
-        <td style="font-size:12px;color:var(--text2)">${acts}</td>
-      </tr>`;
-    }).join('');
-  }
-
-  renderDesf(allLogs);
-}
-
-function filterDesf(name, date){
-  rptFilterName=name; rptFilterDate=date;
-  const range=getRptDateRange();
-  if(!range) return;
-  const allLogs=getAllLogs().filter(l=>dateInRange(l.date,range.from,range.to));
-  renderDesf(allLogs);
-  // Scroll to desfasurator
-  document.getElementById('rpt-desf-card').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function clearRptFilter(){
-  rptFilterName=null; rptFilterDate=null;
-  const range=getRptDateRange();
-  if(!range) return;
-  const allLogs=getAllLogs().filter(l=>dateInRange(l.date,range.from,range.to));
-  renderDesf(allLogs);
-}
-
-function renderDesf(logs){
-  let filtered=logs;
-  const filterBar=document.getElementById('active-filter-container');
-  const clearBtn=document.getElementById('rpt-clear-filter');
-  const title=document.getElementById('rpt-desf-title');
-
-  if(rptFilterName){
-    filtered=logs.filter(l=>l.personName===rptFilterName&&(!rptFilterDate||l.date===rptFilterDate));
-    title.textContent=`Desfășurător — ${rptFilterName}${rptFilterDate?' · '+rptFilterDate:''}`;
-    clearBtn.style.display='';
-    filterBar.innerHTML=`<div class="active-filter-bar">
-      Filtru activ: <strong>${rptFilterName}</strong>${rptFilterDate?' · '+rptFilterDate:''}
-      <button onclick="clearRptFilter()" style="background:none;border:none;color:var(--accent-text);cursor:pointer;font-size:14px;margin-left:4px">✕</button>
-    </div>`;
-  } else {
-    title.textContent='Desfășurător activități';
-    clearBtn.style.display='none';
-    filterBar.innerHTML='';
-  }
-
-  const tbody=document.getElementById('rpt-desf-body');
-  const sorted=filtered.sort((a,b)=>a.date.localeCompare(b.date)||a.personName.localeCompare(b.personName)||(a.start||'').localeCompare(b.start||''));
-  if(!sorted.length){
-    tbody.innerHTML=`<tr><td colspan="6" class="rpt-empty">Nicio înregistrare.</td></tr>`;
-    return;
-  }
-  tbody.innerHTML=sorted.map(l=>{
-    const act=state.activities.find(a=>a.id===l.actId);
-    const color=act?act.color:'#9ba3bb';
-    return `<tr>
-      <td>${l.date}</td>
-      <td><span class="link-cell" onclick="filterDesf('${l.personName.replace(/'/g,"\\'")}',null)">${l.personName}</span></td>
-      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:50%;background:${color}"></span>${l.actLabel}</span></td>
-      <td>${l.start||'—'}</td>
-      <td>${(l.stop||'—')}</td>
-      <td><span class="tag-dur">${(l.duration||'—')}</span></td>
-    </tr>`;
-  }).join('');
 }
 
 setInterval(updateClock,1000);
